@@ -24,7 +24,7 @@ class AccessTokenModel : NSObject,NSCoding{
         didSet{
             //在set方法中给过期日期赋值
             expiresDate = NSDate(timeIntervalSinceNow: expires_in!.doubleValue)
-            println("生命周期：\(expiresDate)")
+//            println("生命周期：\(expiresDate)")
         }
     }
     

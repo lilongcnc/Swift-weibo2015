@@ -46,7 +46,7 @@ class NetWorkManager {
         
     }
     
-    ///  异步下载并获取网络图像
+    ///  异步下载并获取网络图像UIImage
     ///
     ///  :param: urlString  urlString
     ///  :param: completion 完成回调

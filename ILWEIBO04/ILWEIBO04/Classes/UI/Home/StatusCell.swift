@@ -41,6 +41,11 @@ class StatusCell: UITableViewCell {
     @IBOutlet weak var forwardLabel: UILabel!
 
     
+    //选中cell的闭包
+    // 定义照片被选择的闭包（参数：选中的微博数据&照片索引）
+    var photoDidSelected: ((status: StatusModel, photoIndex: Int)->())?
+    
+    
     /// 微博数据 － 设置 cell 内容
     var status: StatusModel? {
         didSet {
@@ -82,7 +87,7 @@ class StatusCell: UITableViewCell {
     }
     
     ///要获得准备的cell高度，需要知道准确的对应的模型数据
-    func getCellHeight(status : StatusModel) -> CGFloat? {
+    func getCellHeight(status : StatusModel) -> CGFloat{
         
         //重新设置当前cell的模型数据，确保模型数据的和cell对应，这样计算出的cell高度才精准
         self.status = status
@@ -118,7 +123,7 @@ class StatusCell: UITableViewCell {
 
 
 
-extension StatusCell : UICollectionViewDataSource {
+extension StatusCell : UICollectionViewDataSource,UICollectionViewDelegate {
     
     // 配图的数量
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -136,6 +141,18 @@ extension StatusCell : UICollectionViewDataSource {
         
         return cell
     }
+    
+    
+    //获取选中的图片
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        println(indexPath.item)
+        //MARK: 判断闭包是否实现
+        if self.photoDidSelected != nil {
+            //传递选中的模型和 选中的item数目
+            self.photoDidSelected!(status: status!, photoIndex: indexPath.item)
+        }
+    }
+    
     
     //设置配图视图的大小
     func calcPictureViewSize() -> (itemSize: CGSize, viewSize: CGSize) {
@@ -185,7 +202,7 @@ extension StatusCell : UICollectionViewDataSource {
             7,8,9 = 3
             */
             let row = (count - 1) / 3
-            println("------------- row:    \(row)")
+//            println("------------- row:    \(row)")
             //            let row = count / 3 + 1
             viewSize = CGSizeMake(3 * s + 2 * m, (CGFloat(row) + 1) * s + CGFloat(row) * m)
         }
@@ -196,6 +213,7 @@ extension StatusCell : UICollectionViewDataSource {
 
     
 }
+
 
 
 

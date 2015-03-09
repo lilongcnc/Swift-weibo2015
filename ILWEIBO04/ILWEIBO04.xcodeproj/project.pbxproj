@@ -10,6 +10,8 @@
 		FD14BC4A1AAAD5EB00052F77 /* StatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD14BC491AAAD5EB00052F77 /* StatusCell.swift */; };
 		FD2EC5AE1AA69E4F00855D78 /* NetWorkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4E67C11AA5C6D8009AD2B9 /* NetWorkManager.swift */; };
 		FD2EC5B01AA69E8400855D78 /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2EC5AF1AA69E8400855D78 /* NetworkManagerTests.swift */; };
+		FD43C5641AAC81B8005B2D71 /* PhotoBrowserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD43C5631AAC81B8005B2D71 /* PhotoBrowserController.swift */; };
+		FD43C5661AAC81C4005B2D71 /* PhotoBrowser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD43C5651AAC81C4005B2D71 /* PhotoBrowser.storyboard */; };
 		FD4D611A1AA4B56B001444CF /* OAuthViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4D61191AA4B56B001444CF /* OAuthViewControllerTests.swift */; };
 		FD4D611B1AA4B593001444CF /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8B4A231AA49E24003D3C32 /* OAuthViewController.swift */; };
 		FD4D611C1AA4B59C001444CF /* OAuth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD8B4A211AA49C53003D3C32 /* OAuth.storyboard */; };
@@ -64,6 +66,8 @@
 		FD2EC5AF1AA69E8400855D78 /* NetworkManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
 		FD35583C1AA4B37C00C37BE5 /* ILWEIBO04-Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ILWEIBO04-Bridge.h"; sourceTree = "<group>"; };
 		FD35583D1AA4B3C400C37BE5 /* ILWEIBO04-BridgeTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ILWEIBO04-BridgeTests.h"; sourceTree = "<group>"; };
+		FD43C5631AAC81B8005B2D71 /* PhotoBrowserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBrowserController.swift; sourceTree = "<group>"; };
+		FD43C5651AAC81C4005B2D71 /* PhotoBrowser.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PhotoBrowser.storyboard; sourceTree = "<group>"; };
 		FD4D61191AA4B56B001444CF /* OAuthViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthViewControllerTests.swift; sourceTree = "<group>"; };
 		FD4D611E1AA4B5D2001444CF /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
 		FD4D611F1AA4B5D2001444CF /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
@@ -122,6 +126,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FD43C5621AAC8176005B2D71 /* PhotoBrowser(照片浏览器) */ = {
+			isa = PBXGroup;
+			children = (
+				FD43C5631AAC81B8005B2D71 /* PhotoBrowserController.swift */,
+				FD43C5651AAC81C4005B2D71 /* PhotoBrowser.storyboard */,
+			);
+			name = "PhotoBrowser(照片浏览器)";
+			path = PhotoBrowser;
+			sourceTree = "<group>";
+		};
 		FD4D611D1AA4B5D2001444CF /* SVProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +244,7 @@
 		FD8D4E4C1AA48F370083824C /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				FD43C5621AAC8176005B2D71 /* PhotoBrowser(照片浏览器) */,
 				FDC224881AA97C2A0063F753 /* Compose(发布微博) */,
 				FD8D4E4F1AA48F370083824C /* Main（公共共享的UI） */,
 				FD8D4E4E1AA48F370083824C /* Home（首页） */,
@@ -405,6 +420,7 @@
 			files = (
 				FD8D4E261AA4898A0083824C /* Images.xcassets in Resources */,
 				FDC91DF41AA8C2840095FBC3 /* Home.storyboard in Resources */,
+				FD43C5661AAC81C4005B2D71 /* PhotoBrowser.storyboard in Resources */,
 				FDC91DF01AA8C1D60095FBC3 /* Discover.storyboard in Resources */,
 				FDC91E041AA8C33E0095FBC3 /* Main.storyboard in Resources */,
 				FD4D61251AA4B5D2001444CF /* SVProgressHUD.bundle in Resources */,
@@ -447,6 +463,7 @@
 				FDC2248A1AA97C540063F753 /* ComposeController.swift in Sources */,
 				FD14BC4A1AAAD5EB00052F77 /* StatusCell.swift in Sources */,
 				FDCC34B31AA9BAC500BA61D6 /* MainNviController.swift in Sources */,
+				FD43C5641AAC81B8005B2D71 /* PhotoBrowserController.swift in Sources */,
 				FD8D4E1F1AA4898A0083824C /* AppDelegate.swift in Sources */,
 				FD4D61241AA4B5D2001444CF /* SVIndefiniteAnimatedView.m in Sources */,
 				FDC91DE41AA88E5F0095FBC3 /* AccessTokenModel.swift in Sources */,

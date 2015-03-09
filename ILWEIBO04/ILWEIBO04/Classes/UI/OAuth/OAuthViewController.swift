@@ -39,16 +39,17 @@ class OAuthViewController: UIViewController {
 
 extension OAuthViewController: UIWebViewDelegate {
     
+    //MARK:用不到的方法
     func webViewDidStartLoad(webView: UIWebView) {
-        println(__FUNCTION__)
+//        println(__FUNCTION__)
     }
     
     func webViewDidFinishLoad(webView: UIWebView) {
-        println(__FUNCTION__)
+//        println(__FUNCTION__)
     }
     
     func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
-        println(__FUNCTION__)
+//        println(__FUNCTION__)
     }
     
     /// 页面重定向

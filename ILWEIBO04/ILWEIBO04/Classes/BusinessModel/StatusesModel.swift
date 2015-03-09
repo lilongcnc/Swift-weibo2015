@@ -27,6 +27,7 @@ class StatusesModel: NSObject, DictModelProtocol {
     ///  未读数量
     var has_unread: Int = 0
     
+    //字典转模型方法
     static func customClassMapping() -> [String: String]? {
         return ["statuses": "\(StatusModel.self)"]
     }
@@ -151,6 +152,20 @@ class StatusModel: NSObject,DictModelProtocol {
         }
     }
     
+    
+    
+    /// 自定义属性： 返回所有的大图链接URL
+    var large_pic_Urls : [String]? {
+        //MARK : 写get { } 严谨？？？待验证
+        get{
+            // 使用KVC直接获取 所有的大图链接URL
+            let allurls = self.valueForKeyPath("pictureUrls.large_pic") as! [String]
+            return allurls
+        }
+    }
+    
+    
+    //字典转模型方法
     static func customClassMapping() -> [String : String]? {
         return ["pic_urls":"\(StatusPictureURLModel.self)","user":"\(UserInfoModel.self)","retweeted_status":"\(StatusModel.self)"]
     }
@@ -160,5 +175,14 @@ class StatusModel: NSObject,DictModelProtocol {
 ///  微博配图模型
 class StatusPictureURLModel: NSObject {
     ///  缩略图 URL
-    var thumbnail_pic: String?
+    var thumbnail_pic: String? {
+        didSet{
+            let largeURL = thumbnail_pic!.stringByReplacingOccurrencesOfString("thumbnail", withString: "large")
+            large_pic = largeURL
+        }
+    }
+    
+    /// 大图 URl
+    var large_pic: String?
+    
 }

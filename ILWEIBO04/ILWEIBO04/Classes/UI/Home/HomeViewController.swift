@@ -13,12 +13,16 @@ class HomeViewController: UITableViewController {
     //定义微博数据
     var statusesModel : StatusesModel?
     
+    //行高缓存
+    lazy var rowHeightCache : NSCache? = {
+       return NSCache()
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //获取模型数据
         loadData()
-        
     }
 
 ///  获取 模型中的数据
@@ -28,7 +32,7 @@ class HomeViewController: UITableViewController {
         StatusesModel.loadStatusesModel { (data, error) -> () in
             //处理错误
             if error != nil {
-                println(error)
+                println("HomeViewController 出错误了: \(error)")
                 SVProgressHUD.showInfoWithStatus("你的网络不给力！！！")
                 return
             }
@@ -40,12 +44,13 @@ class HomeViewController: UITableViewController {
                 // 获取当前模型 赋值 数据
                 //MARK: 在闭包当中，需要self
                 self.statusesModel = data
-                
-                println(self.statusesModel)
                 self.tableView.reloadData()
             }
         }
     }
+    
+///  弹出图片浏览视图
+    
 }
 
 
@@ -65,7 +70,6 @@ extension HomeViewController : UITableViewDataSource,UITableViewDelegate{
         // 调用的是类方法
         let cellID = StatusCell.cellIdentifier(statusModel)
         
-        
         return (cellID!, statusModel)
     }
     
@@ -78,16 +82,47 @@ extension HomeViewController : UITableViewDataSource,UITableViewDelegate{
         //向cell赋值
         cell.status =  cellInfo.status
         
+        //判断表格的闭包是否被实现
+        if cell.photoDidSelected == nil {
+            cell.photoDidSelected = {(status: StatusModel, photoIndex: Int)->() in
+                
+                let PhotoBrowserVC = PhotoBrowserController.photoBrowserController()
+                
+                //传递数据
+                PhotoBrowserVC.urls = status.large_pic_Urls
+                PhotoBrowserVC.selectedIndex = photoIndex
+                
+                //弹出 图片浏览视图控制器
+                self.presentViewController(PhotoBrowserVC, animated: true, completion: nil)
+                
+                
+            }
+        }
+        
+        
+        
         return cell
     }
     
     //MARK:设置cell的高度 要根据模型数据来设置
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        //获取cell模型数据
         let cellInfo = cellInfos(indexPath)
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellInfo.cellID) as! StatusCell
-
-        return cell.getCellHeight(cellInfo.status)!
+        //MARK : 判断是否已经缓存了行高
+        if let h = rowHeightCache?.objectForKey("\(cellInfo.status.id)") as? NSNumber {
+            println("从缓存返回 \(h)")
+            return CGFloat(h.floatValue)
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier(cellInfo.cellID) as! StatusCell
+            let height = cell.getCellHeight(cellInfo.status)
+            
+            // 将行高添加到缓存 - swift 中向 NSCache/NSArray/NSDictrionary 中添加数值不需要包装
+            rowHeightCache!.setObject(height, forKey: "\(cellInfo.status.id)")
+            
+            return cell.getCellHeight(cellInfo.status)
+        }
     }
     
     //MARK: 预设值cell的高度，可以提高性能

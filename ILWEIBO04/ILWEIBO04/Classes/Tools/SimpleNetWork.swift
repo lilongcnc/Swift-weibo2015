@@ -99,7 +99,7 @@ class SimpleNetWork {
         
         // 2.1 缓存检测，如果文件已经下载完成直接返回
         if NSFileManager.defaultManager().fileExistsAtPath(path) {
-            println("\(urlString) 图片已经被缓存")
+//            println("\(urlString) 图片已经被缓存")
             completion(result: nil, error: nil)
             return
         }
@@ -151,9 +151,6 @@ class SimpleNetWork {
         //4.创建目录文件夹，如果有就不创建
         // withIntermediateDirectories -> 是否智能创建层级目录
         NSFileManager.defaultManager().createDirectoryAtPath(path, withIntermediateDirectories: true, attributes: nil, error: nil)
-        
-//        println(path)
-        
         return path
     }()
     

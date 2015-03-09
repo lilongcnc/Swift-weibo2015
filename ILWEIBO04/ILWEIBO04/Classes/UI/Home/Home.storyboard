@@ -100,7 +100,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RHD-EY-VOm">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RHD-EY-VOm">
                                                                 <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                                             </imageView>
                                                         </subviews>
@@ -119,6 +119,7 @@
                                             </cells>
                                             <connections>
                                                 <outlet property="dataSource" destination="am7-Ad-kxU" id="AjL-4M-AIa"/>
+                                                <outlet property="delegate" destination="am7-Ad-kxU" id="kFV-8j-1bW"/>
                                             </connections>
                                         </collectionView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BuM-mE-Jxc" userLabel="底部工具条">
@@ -307,7 +308,7 @@
                                         </label>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CQb-o8-Dpp" userLabel="正文配图">
                                             <rect key="frame" x="8" y="120" width="290" height="90"/>
-                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.96999999999999997" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="90" id="mfY-1Y-aPM"/>
                                                 <constraint firstAttribute="width" constant="290" id="ymS-c9-WvT"/>
@@ -326,7 +327,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I5G-bX-q1H">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I5G-bX-q1H">
                                                                 <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                                             </imageView>
                                                         </subviews>
@@ -345,6 +346,7 @@
                                             </cells>
                                             <connections>
                                                 <outlet property="dataSource" destination="8CO-cn-C0Y" id="G5U-ff-h6A"/>
+                                                <outlet property="delegate" destination="8CO-cn-C0Y" id="wa7-p7-LiT"/>
                                             </connections>
                                         </collectionView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fZF-bt-al3" userLabel="底部工具条">
@@ -497,7 +499,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rwm-c2-s0P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-569" y="416"/>
+            <point key="canvasLocation" x="-821" y="317"/>
         </scene>
     </scenes>
     <resources>

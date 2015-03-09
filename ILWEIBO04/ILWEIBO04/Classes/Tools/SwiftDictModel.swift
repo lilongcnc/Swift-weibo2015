@@ -268,6 +268,7 @@ extension Dictionary {
     }
 }
 
+//MARK: 泛型？？？
 func printLog<T>(message: T, file: String = __FILE__, method: String = __FUNCTION__, line: Int = __LINE__) {
     println("\(file.lastPathComponent)[\(line)], \(method): \(message)")
 }
