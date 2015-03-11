@@ -36,13 +36,14 @@ class StatusesModel: NSObject, DictModelProtocol {
     ///  刷新微博数据 - 专门加载网络数据以及错误处理的回调
     ///  一旦加载成功，负责字典转模型，回调传回转换过的模型数据
     //MARK: 这个方法供外界调用，一定要写class,否则调用到方法不会自己提示出 completiom 闭包
-    class func loadStatusesModel(completiom:(data : StatusesModel?, error :NSError?) -> ()){
+    //MARK: 可以直接初始设置值为 maxId : = 0
+    class func loadStatusesModel(maxId : Int = 0,completiom:(data : StatusesModel?, error :NSError?) -> ()){
         
         let net = NetWorkManager.instance
         //获取access_token
         if let token = AccessTokenModel.loadAccessToken()?.access_token {
             
-            let params = ["access_token" : token]
+            let params = ["access_token" : token, "max_id" : "\(maxId)"]
             //发送网络请求，获取模型数据
             net.requestJSON(.GET, WB_Home_Timeline_URL, params) { (result, error) -> () in
                 

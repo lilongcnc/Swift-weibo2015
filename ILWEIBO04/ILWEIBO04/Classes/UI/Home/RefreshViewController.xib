@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7513.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="RefreshView" customModule="ILWEIBO04" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="68R-SZ-yhi" userLabel="提示视图">
+                    <rect key="frame" x="150" y="0.0" width="300" height="60"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tableview_pull_refresh" translatesAutoresizingMaskIntoConstraints="NO" id="SZo-N6-JDV">
+                            <rect key="frame" x="63" y="8" width="32" height="44"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="下拉刷新数据..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cof-31-io3">
+                            <rect key="frame" x="117" y="19" width="183" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="1" green="0.50701903355897815" blue="0.16527374541579909" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="coP-6P-hTJ"/>
+                        <constraint firstAttribute="width" constant="300" id="gTZ-bT-yfX"/>
+                    </constraints>
+                </view>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ibs-gb-3Zx" userLabel="加载视图">
+                    <rect key="frame" x="150" y="0.0" width="300" height="60"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="正在刷新数据..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M51-YI-i9K">
+                            <rect key="frame" x="117" y="19" width="183" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="1" green="0.5070190336" blue="0.16527374540000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tableview_loading" translatesAutoresizingMaskIntoConstraints="NO" id="UXh-5K-EZm">
+                            <rect key="frame" x="63" y="14" width="32" height="32"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="300" id="RnM-u6-RWF"/>
+                        <constraint firstAttribute="height" constant="60" id="vaY-Dl-9ca"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="68R-SZ-yhi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="MJh-Pi-19H"/>
+                <constraint firstItem="Ibs-gb-3Zx" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Sy4-qg-W5G"/>
+                <constraint firstAttribute="centerX" secondItem="Ibs-gb-3Zx" secondAttribute="centerX" id="YJJ-yP-XIb"/>
+                <constraint firstAttribute="centerX" secondItem="68R-SZ-yhi" secondAttribute="centerX" id="bX2-CH-gaV"/>
+                <constraint firstAttribute="bottom" secondItem="Ibs-gb-3Zx" secondAttribute="bottom" id="dVk-0R-A5X"/>
+                <constraint firstAttribute="bottom" secondItem="68R-SZ-yhi" secondAttribute="bottom" id="qs3-ow-eUp"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="loadImageView" destination="UXh-5K-EZm" id="bce-kk-zEe"/>
+                <outlet property="loadView" destination="Ibs-gb-3Zx" id="AgP-NJ-oMF"/>
+                <outlet property="tipImageView" destination="SZo-N6-JDV" id="fux-VC-kcd"/>
+                <outlet property="tipView" destination="68R-SZ-yhi" id="Mpy-D0-HHq"/>
+            </connections>
+            <point key="canvasLocation" x="392" y="18"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="tableview_loading" width="32" height="32"/>
+        <image name="tableview_pull_refresh" width="32" height="32"/>
+    </resources>
+</document>

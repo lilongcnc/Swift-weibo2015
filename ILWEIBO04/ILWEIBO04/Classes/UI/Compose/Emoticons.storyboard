@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7BV-hg-kbs">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7513.1"/>
+    </dependencies>
+    <scenes>
+        <!--Emoticons View Controller-->
+        <scene sceneID="fUw-Bf-3SG">
+            <objects>
+                <viewController id="7BV-hg-kbs" customClass="EmoticonsViewController" customModule="ILWEIBO04" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gwi-V8-yeG"/>
+                        <viewControllerLayoutGuide type="bottom" id="hMT-JO-qAe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wZt-Mt-KuC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OY3-Td-RMh">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="tcz-90-CdI"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="最近" id="NLS-yR-LPB"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="f2F-kY-ZUt"/>
+                                    <barButtonItem title="默认" id="y5P-5S-wEW"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Tnf-az-ga2"/>
+                                    <barButtonItem title="emoji" id="6qM-yf-Zwf"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="L0u-4Y-UkE"/>
+                                    <barButtonItem title="浪小花" id="L7z-VG-5sw"/>
+                                </items>
+                            </toolbar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Fjj-1h-Bnh">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lte-ob-3EE">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="emoticonsCell" id="92e-pC-e2v">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="7BV-hg-kbs" id="dN7-lA-9ga"/>
+                                    <outlet property="delegate" destination="7BV-hg-kbs" id="oWv-gu-9Bf"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="OY3-Td-RMh" secondAttribute="trailing" id="2eZ-7e-VqA"/>
+                            <constraint firstItem="Fjj-1h-Bnh" firstAttribute="top" secondItem="wZt-Mt-KuC" secondAttribute="top" id="4UQ-Bc-4sq"/>
+                            <constraint firstItem="Fjj-1h-Bnh" firstAttribute="leading" secondItem="wZt-Mt-KuC" secondAttribute="leading" id="ABn-Om-V4X"/>
+                            <constraint firstAttribute="trailing" secondItem="Fjj-1h-Bnh" secondAttribute="trailing" id="VdS-t3-Yfd"/>
+                            <constraint firstItem="OY3-Td-RMh" firstAttribute="top" secondItem="Fjj-1h-Bnh" secondAttribute="bottom" id="gcs-bf-9hQ"/>
+                            <constraint firstItem="hMT-JO-qAe" firstAttribute="top" secondItem="OY3-Td-RMh" secondAttribute="bottom" id="x5m-eO-VjQ"/>
+                            <constraint firstItem="OY3-Td-RMh" firstAttribute="leading" secondItem="wZt-Mt-KuC" secondAttribute="leading" id="zoA-im-0Xx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="Fjj-1h-Bnh" id="l7L-RM-8sm"/>
+                        <outlet property="flowlayout" destination="lte-ob-3EE" id="J5z-bh-J2C"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xc5-Bs-GpP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="777" y="249"/>
+        </scene>
+    </scenes>
+</document>

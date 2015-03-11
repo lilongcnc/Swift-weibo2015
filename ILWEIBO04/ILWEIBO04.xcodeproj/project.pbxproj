@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		FD14BC4A1AAAD5EB00052F77 /* StatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD14BC491AAAD5EB00052F77 /* StatusCell.swift */; };
+		FD165B621AB0A21C00F2C944 /* EmoticonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD165B611AB0A21C00F2C944 /* EmoticonsViewController.swift */; };
+		FD165B641AB0A22B00F2C944 /* Emoticons.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD165B631AB0A22B00F2C944 /* Emoticons.storyboard */; };
+		FD18679B1AAEC08100ABDA2F /* RefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1867991AAEC08100ABDA2F /* RefreshViewController.swift */; };
+		FD18679C1AAEC08100ABDA2F /* RefreshViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD18679A1AAEC08100ABDA2F /* RefreshViewController.xib */; };
 		FD2EC5AE1AA69E4F00855D78 /* NetWorkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4E67C11AA5C6D8009AD2B9 /* NetWorkManager.swift */; };
 		FD2EC5B01AA69E8400855D78 /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2EC5AF1AA69E8400855D78 /* NetworkManagerTests.swift */; };
 		FD43C5641AAC81B8005B2D71 /* PhotoBrowserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD43C5631AAC81B8005B2D71 /* PhotoBrowserController.swift */; };
@@ -63,6 +67,10 @@
 
 /* Begin PBXFileReference section */
 		FD14BC491AAAD5EB00052F77 /* StatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusCell.swift; sourceTree = "<group>"; };
+		FD165B611AB0A21C00F2C944 /* EmoticonsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoticonsViewController.swift; sourceTree = "<group>"; };
+		FD165B631AB0A22B00F2C944 /* Emoticons.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Emoticons.storyboard; sourceTree = "<group>"; };
+		FD1867991AAEC08100ABDA2F /* RefreshViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshViewController.swift; sourceTree = "<group>"; };
+		FD18679A1AAEC08100ABDA2F /* RefreshViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RefreshViewController.xib; sourceTree = "<group>"; };
 		FD2EC5AF1AA69E8400855D78 /* NetworkManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
 		FD35583C1AA4B37C00C37BE5 /* ILWEIBO04-Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ILWEIBO04-Bridge.h"; sourceTree = "<group>"; };
 		FD35583D1AA4B3C400C37BE5 /* ILWEIBO04-BridgeTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ILWEIBO04-BridgeTests.h"; sourceTree = "<group>"; };
@@ -269,9 +277,11 @@
 		FD8D4E4E1AA48F370083824C /* Home（首页） */ = {
 			isa = PBXGroup;
 			children = (
-				FDC91DF31AA8C2840095FBC3 /* Home.storyboard */,
 				FDC91DF51AA8C2920095FBC3 /* HomeViewController.swift */,
 				FD14BC491AAAD5EB00052F77 /* StatusCell.swift */,
+				FD1867991AAEC08100ABDA2F /* RefreshViewController.swift */,
+				FD18679A1AAEC08100ABDA2F /* RefreshViewController.xib */,
+				FDC91DF31AA8C2840095FBC3 /* Home.storyboard */,
 			);
 			name = "Home（首页）";
 			path = Home;
@@ -333,6 +343,8 @@
 			children = (
 				FDC224891AA97C540063F753 /* ComposeController.swift */,
 				FDC2248B1AA97C5E0063F753 /* Compose.storyboard */,
+				FD165B611AB0A21C00F2C944 /* EmoticonsViewController.swift */,
+				FD165B631AB0A22B00F2C944 /* Emoticons.storyboard */,
 			);
 			name = "Compose(发布微博)";
 			path = Compose;
@@ -422,10 +434,12 @@
 				FDC91DF41AA8C2840095FBC3 /* Home.storyboard in Resources */,
 				FD43C5661AAC81C4005B2D71 /* PhotoBrowser.storyboard in Resources */,
 				FDC91DF01AA8C1D60095FBC3 /* Discover.storyboard in Resources */,
+				FD165B641AB0A22B00F2C944 /* Emoticons.storyboard in Resources */,
 				FDC91E041AA8C33E0095FBC3 /* Main.storyboard in Resources */,
 				FD4D61251AA4B5D2001444CF /* SVProgressHUD.bundle in Resources */,
 				FDC91DFA1AA8C2CE0095FBC3 /* Message.storyboard in Resources */,
 				FDC91E001AA8C3110095FBC3 /* Profile.storyboard in Resources */,
+				FD18679C1AAEC08100ABDA2F /* RefreshViewController.xib in Resources */,
 				FDC2248C1AA97C5E0063F753 /* Compose.storyboard in Resources */,
 				FD8B4A221AA49C53003D3C32 /* OAuth.storyboard in Resources */,
 			);
@@ -449,6 +463,7 @@
 				FD8B4A241AA49E24003D3C32 /* OAuthViewController.swift in Sources */,
 				FDC91E061AA8C43E0095FBC3 /* MainViewController.swift in Sources */,
 				FDC91DF81AA8C2BD0095FBC3 /* MessageViewController.swift in Sources */,
+				FD165B621AB0A21C00F2C944 /* EmoticonsViewController.swift in Sources */,
 				FDB22F331AA9295E003C86C4 /* TabBar.swift in Sources */,
 				FDC91DFE1AA8C2E80095FBC3 /* ProfileViewController.swift in Sources */,
 				FD4E67C21AA5C6D8009AD2B9 /* NetWorkManager.swift in Sources */,
@@ -456,6 +471,7 @@
 				FD4FF7C41AA9F7FD00287FAB /* String+Hash.swift in Sources */,
 				FDC91DF61AA8C2920095FBC3 /* HomeViewController.swift in Sources */,
 				FD4FF7C31AA9F7FD00287FAB /* SimpleNetWork.swift in Sources */,
+				FD18679B1AAEC08100ABDA2F /* RefreshViewController.swift in Sources */,
 				FDCC34B81AA9C58000BA61D6 /* StatusesModel.swift in Sources */,
 				FDCC34BE1AA9CF0300BA61D6 /* SwiftDictModel.swift in Sources */,
 				FD4D61261AA4B5D2001444CF /* SVProgressHUD.m in Sources */,

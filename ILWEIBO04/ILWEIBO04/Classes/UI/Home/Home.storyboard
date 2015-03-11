@@ -480,6 +480,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="首页" id="6yd-YW-AMw"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="EyZ-Xs-rZd" customClass="RefreshViewController" customModule="ILWEIBO04" customModuleProvider="target">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="loadData" destination="qug-Y8-Tq6" eventType="valueChanged" id="WnF-nj-AaX"/>
+                        </connections>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gJT-xz-V9y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
