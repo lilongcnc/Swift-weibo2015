@@ -14,6 +14,15 @@ class EmoticonsViewController: UIViewController {
     @IBOutlet weak var flowlayout: UICollectionViewFlowLayout!
 
 
+     /// 定义代理对象,代理切记用weak
+    weak var delegate : EmoticonsViewControllerDelegate?
+    
+    //懒加载分组表情数据模型数组
+    lazy var allEmoticonSections : [EmoticonsSection]? = {
+        return EmoticonsSection.loadEmoticons()
+    }()
+    
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
 
@@ -51,30 +60,78 @@ class EmoticonsViewController: UIViewController {
 }
 
 
+///  定义协议
+// 1. 定义协议
+/**
+在 swift 中，除了类，还有"结构体"以及"枚举"都可以遵守协议！
+weak 关键字，是用在 ARC 中管理对象内存属性，weak 关键字只能描述一个对象
+
+也可以使用 @objc，要保证所有的参数，都是 OC 的
+*/
+protocol EmoticonsViewControllerDelegate : NSObjectProtocol {
+    ///  选中某一个表情
+    func emoticonsViewControllerDidSelectEmoticon( emoticonsVC: EmoticonsViewController, emoticon : Emoticon)
+    
+}
+
 
 extension EmoticonsViewController : UICollectionViewDataSource,UICollectionViewDelegate{
+    
+    //根据IndexPath返回一个 Emoticon
+    func selectEmoticon(indexPath : NSIndexPath) -> Emoticon {
+        return allEmoticonSections![indexPath.section].emoticons[indexPath.item]
+    }
+    
+    //选中表情cell
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        //判断代理属性是否为空，然后执行
+        delegate?.emoticonsViewControllerDidSelectEmoticon(self, emoticon: selectEmoticon(indexPath))
+    }
+    
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int{
-        return 3
+        
+        return allEmoticonSections?.count ?? 0
         
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
-        return 21
+        return allEmoticonSections?[section].emoticons.count ?? 0
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell{
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("emoticonsCell", forIndexPath: indexPath) as! UICollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("emoticonsCell", forIndexPath: indexPath) as! EmoticonCell
         
-        if indexPath.section % 2 == 0 {
-            cell.backgroundColor = UIColor.redColor()
-        }else{
-            cell.backgroundColor = UIColor.orangeColor()
-        }
+        //给cell上赋值表情
+        cell.emoticon = selectEmoticon(indexPath)
         
         return cell
     }
+}
+
+
+class EmoticonCell : UICollectionViewCell {
     
+    @IBOutlet weak var iconView: UIImageView!
+    @IBOutlet weak var emoticonLabel: UILabel!
     
-    
-    
+    var emoticon : Emoticon? {
+        didSet{
+//            println(emoticon?.imagePath)
+            
+            //给表情设置图片
+            if let path = emoticon?.imagePath {
+                self.iconView.image = UIImage(contentsOfFile: path)
+            }else {
+                self.iconView.image = nil
+            }
+            
+            //给删除按钮添加图片
+            if emoticon!.isDeleteButton {
+                self.iconView.image = UIImage(named: "compose_emotion_delete_highlighted")
+            }
+            
+            //给emoji表情设置值
+            emoticonLabel.text = emoticon?.emoji
+        }
+    }
 }

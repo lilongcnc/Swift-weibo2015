@@ -18,6 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         
+        
+//        println("\(EmoticonsSection.loadEmoticons())")
+        
         //从沙盒中获取 access_token,有则直接跳转到 主界面
         if let token = AccessTokenModel.loadAccessToken(){
 //            println(token.debugDescription)

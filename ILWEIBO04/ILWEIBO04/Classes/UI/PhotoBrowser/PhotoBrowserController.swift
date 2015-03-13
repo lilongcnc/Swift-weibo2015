@@ -38,7 +38,7 @@ class PhotoBrowserController: UIViewController {
     */
     override func viewWillLayoutSubviews() {
         //MARK : swift,直接省略self.view.
-        println("\(__FUNCTION__) \(view.frame)")
+//        println("\(__FUNCTION__) \(view.frame)")
         //设置collectionViewcell的 布局
         layout.itemSize = view.frame.size
         layout.minimumInteritemSpacing = 0
@@ -77,8 +77,6 @@ class PhotoBrowserController: UIViewController {
     @IBAction func savePhotoBtnOnClick(sender: AnyObject) {
         //获取当前collectionView页面停留的 下标号
         if let indexPath = photoView.indexPathsForVisibleItems().last as? NSIndexPath {
-            println("\(indexPath.row)")
-            
             //获取保存的cell 
             let cell = photoView.cellForItemAtIndexPath(indexPath) as! PhotoCell
             
@@ -151,12 +149,14 @@ class PhotoCell : UICollectionViewCell,UIScrollViewDelegate {
     // 定义图像的url ，并且下载
     var urlString : String? {
         didSet{
+            self.iconView!.image = nil
+            
             //下载图像，并且显示
             NetWorkManager.instance.requestImage(urlString!) { (result, error) -> () in
                 if let image = result as? UIImage {
                     self.iconView!.image = image
                     // 计算设置图像的大小
-                    self.self.setupImageView(image)
+                    self.setupImageView(image)
                 }
                 
             }
