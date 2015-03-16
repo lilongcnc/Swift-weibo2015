@@ -51,12 +51,16 @@
 		FDC91E001AA8C3110095FBC3 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDC91DFF1AA8C3110095FBC3 /* Profile.storyboard */; };
 		FDC91E041AA8C33E0095FBC3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDC91E031AA8C33E0095FBC3 /* Main.storyboard */; };
 		FDC91E061AA8C43E0095FBC3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC91E051AA8C43E0095FBC3 /* MainViewController.swift */; };
+		FDCAC5BA1AB72304005F9848 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FDCAC5B91AB72304005F9848 /* libsqlite3.dylib */; };
+		FDCAC5BD1AB72363005F9848 /* SQLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCAC5BB1AB72363005F9848 /* SQLite.swift */; };
+		FDCAC5BE1AB72363005F9848 /* String+Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCAC5BC1AB72363005F9848 /* String+Path.swift */; };
 		FDCC34B31AA9BAC500BA61D6 /* MainNviController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC34B21AA9BAC500BA61D6 /* MainNviController.swift */; };
 		FDCC34B81AA9C58000BA61D6 /* StatusesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC34B71AA9C58000BA61D6 /* StatusesModel.swift */; };
 		FDCC34BC1AA9C63300BA61D6 /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC34BB1AA9C63300BA61D6 /* UserInfoModel.swift */; };
 		FDCC34BE1AA9CF0300BA61D6 /* SwiftDictModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC34BD1AA9CF0300BA61D6 /* SwiftDictModel.swift */; };
 		FDE047E11AB1E42800BAB61F /* Emoticons.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE047E01AB1E42800BAB61F /* Emoticons.swift */; };
 		FDE1B5B21AB30B7000C35021 /* ComposeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE1B5B11AB30B7000C35021 /* ComposeTextView.swift */; };
+		FDE1B5B41AB346F400C35021 /* String+Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE1B5B31AB346F400C35021 /* String+Regex.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,12 +120,16 @@
 		FDC91DFF1AA8C3110095FBC3 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		FDC91E031AA8C33E0095FBC3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		FDC91E051AA8C43E0095FBC3 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		FDCAC5B91AB72304005F9848 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		FDCAC5BB1AB72363005F9848 /* SQLite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLite.swift; sourceTree = "<group>"; };
+		FDCAC5BC1AB72363005F9848 /* String+Path.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Path.swift"; sourceTree = "<group>"; };
 		FDCC34B21AA9BAC500BA61D6 /* MainNviController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNviController.swift; sourceTree = "<group>"; };
 		FDCC34B71AA9C58000BA61D6 /* StatusesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusesModel.swift; sourceTree = "<group>"; };
 		FDCC34BB1AA9C63300BA61D6 /* UserInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
 		FDCC34BD1AA9CF0300BA61D6 /* SwiftDictModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftDictModel.swift; sourceTree = "<group>"; };
 		FDE047E01AB1E42800BAB61F /* Emoticons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emoticons.swift; sourceTree = "<group>"; };
 		FDE1B5B11AB30B7000C35021 /* ComposeTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeTextView.swift; sourceTree = "<group>"; };
+		FDE1B5B31AB346F400C35021 /* String+Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Regex.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDCAC5BA1AB72304005F9848 /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +177,7 @@
 		FD8D4E101AA4898A0083824C = {
 			isa = PBXGroup;
 			children = (
+				FDCAC5B91AB72304005F9848 /* libsqlite3.dylib */,
 				FD8D4E1B1AA4898A0083824C /* ILWEIBO04 */,
 				FD8D4E311AA4898A0083824C /* ILWEIBO04Tests */,
 				FD8D4E1A1AA4898A0083824C /* Products */,
@@ -250,8 +260,11 @@
 		FD8D4E4B1AA48F370083824C /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				FDCAC5BB1AB72363005F9848 /* SQLite.swift */,
+				FDCAC5BC1AB72363005F9848 /* String+Path.swift */,
 				FD4E67C11AA5C6D8009AD2B9 /* NetWorkManager.swift */,
 				FD4FF7C11AA9F7FD00287FAB /* SimpleNetWork.swift */,
+				FDE1B5B31AB346F400C35021 /* String+Regex.swift */,
 				FD4FF7C21AA9F7FD00287FAB /* String+Hash.swift */,
 				FDCC34BD1AA9CF0300BA61D6 /* SwiftDictModel.swift */,
 			);
@@ -474,6 +487,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD8B4A241AA49E24003D3C32 /* OAuthViewController.swift in Sources */,
+				FDCAC5BD1AB72363005F9848 /* SQLite.swift in Sources */,
 				FDC91E061AA8C43E0095FBC3 /* MainViewController.swift in Sources */,
 				FDC91DF81AA8C2BD0095FBC3 /* MessageViewController.swift in Sources */,
 				FD165B621AB0A21C00F2C944 /* EmoticonsViewController.swift in Sources */,
@@ -484,6 +498,8 @@
 				FD4FF7C41AA9F7FD00287FAB /* String+Hash.swift in Sources */,
 				FDC91DF61AA8C2920095FBC3 /* HomeViewController.swift in Sources */,
 				FDE1B5B21AB30B7000C35021 /* ComposeTextView.swift in Sources */,
+				FDE1B5B41AB346F400C35021 /* String+Regex.swift in Sources */,
+				FDCAC5BE1AB72363005F9848 /* String+Path.swift in Sources */,
 				FD4FF7C31AA9F7FD00287FAB /* SimpleNetWork.swift in Sources */,
 				FD18679B1AAEC08100ABDA2F /* RefreshViewController.swift in Sources */,
 				FD8AEA0E1AB2D25F00C2956E /* EmoteTextAttachment.swift in Sources */,
@@ -617,7 +633,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: WEIFENG HOU (EXT82G9Z85)";
 				INFOPLIST_FILE = ILWEIBO04/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -631,7 +647,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: WEIFENG HOU (EXT82G9Z85)";
 				INFOPLIST_FILE = ILWEIBO04/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

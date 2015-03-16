@@ -51,8 +51,14 @@ class StatusCell: UITableViewCell {
         didSet {
             nameLabel.text = status!.user!.name
             timeLabel.text = status!.created_at
-            sourceLabel.text = status!.source
-            contentLabel.text = status!.text
+            
+            //sourceStr调用的方法是返回String的，UILabel也要用 xxx.text接收
+            sourceLabel.text = status!.sourceStr
+            
+//            contentLabel.text = status!.text
+//             返回NSAttributedString，UILabel也要用 xxx.attributedText接收
+            contentLabel.attributedText = status!.text!.emoticonString() ?? NSAttributedString(string: status!.text!)
+            
             
             // 头像
             if let imageURL  = status!.user!.profile_image_url {

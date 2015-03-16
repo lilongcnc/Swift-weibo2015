@@ -8,13 +8,44 @@
 
 import Foundation
 
+
+
+
+/// 表情图像数组，单例，专供查询使用
+class EmoticonList {
+    ///  单例
+    private static let instance = EmoticonList()
+    class var sharedEmoticonList : EmoticonList {
+        return instance
+    }
+    
+    ///  所有自定义的表情的数组，便于查询
+    var emoticons : [Emoticon]
+    
+    init() {
+        //实例化表情数组
+        emoticons = [Emoticon]()
+        
+        //填充数据
+        //1.加载 分组表情中 的全部数据
+        let sections = EmoticonsSection.loadEmoticons()
+
+        // 2. 合并数组（提示：TODO 这里可以优化，把 emoji 去掉，因为emoji没有图片）
+        for sec in sections {
+            //TODO ? 这个可以合并数组？？？？
+            emoticons += sec.emoticons
+        }
+    }
+    
+    
+}
+
+
 /**
 这个模型类，我们不用字典转模型。因为嵌套的比较深，我们用字典转模型的话，会比自己手动赋值多写。刀哥验证的，我自己没验证
 
 这里要注意，emoji表情和浪小花表情是不一样的，一个是图片，一个是字符串
 */
-
-
 //表情分组类  emtioncons.plist
 class EmoticonsSection {
     //如果我们在构造函数当中给对象属性设置初始值，属性就不用 ？
@@ -41,7 +72,13 @@ class EmoticonsSection {
         emoticons = [Emoticon]()
     }
     
-    
+    /**
+    下边这三个函数逐层解析
+    loadEmoticons() -> [EmoticonsSection]
+    loadEmoticons(dict : NSDictionary) -> [EmoticonsSection]
+    loadEmoticons(list : NSArray, _ dict : NSDictionary) -> [EmoticonsSection]
+    */
+    ///  获取表情字符串数据数组，里边的所有的表情数据都详细加载
     class func loadEmoticons() -> [EmoticonsSection]{
         //1.获取路径,创建数组
         let path = NSBundle.mainBundle().bundlePath.stringByAppendingPathComponent("Emoticons/emoticons.plist")

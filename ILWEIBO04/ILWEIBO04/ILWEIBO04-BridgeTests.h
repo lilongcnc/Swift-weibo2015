@@ -9,7 +9,7 @@
 //在桥接的时候，使用了单元测试，那么在测试文件的头文件中也需要告诉它 OC文件
 #import "SVProgressHUD.h"
 #import <CommonCrypto/CommonCrypto.h>
-
+#import <sqlite3.h>
 #ifndef ILWEIBO04_ILWEIBO04_BridgeTests_h
 #define ILWEIBO04_ILWEIBO04_BridgeTests_h
 

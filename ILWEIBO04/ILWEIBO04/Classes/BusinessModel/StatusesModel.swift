@@ -59,6 +59,9 @@ class StatusesModel: NSObject, DictModelProtocol {
                 //字典转模型
                 let data = DictModelManager.sharedManager.objectWithDictionary(result as! NSDictionary, cls: StatusesModel.self) as? StatusesModel
                 
+                //保存微博数据
+                self.saveStatusData(data?.statuses)
+                
                 
                 // 如果有下载图像的 url，就先下载图像
                 if let urls = StatusesModel.pictureURLs(data?.statuses) { //获取 图像链接数组
@@ -79,6 +82,14 @@ class StatusesModel: NSObject, DictModelProtocol {
                 
             }
         }
+    }
+    
+    
+    
+    class func saveStatusData(status : [StatusModel]?) {
+        
+        
+        
     }
     
     
@@ -126,6 +137,12 @@ class StatusModel: NSObject,DictModelProtocol {
     var text: String?
     ///  微博来源
     var source: String?
+    
+    //自定义属性： 过滤后的微博来源
+    var sourceStr : String {
+        return source?.removeHref() ?? ""
+    }
+    
     ///  转发数
     var reposts_count: Int = 0
     ///  评论数

@@ -77,6 +77,7 @@ class SimpleNetWork {
             }
         }
         
+        
         // 在主线程回调
         dispatch_group_notify(group, dispatch_get_main_queue()) { () -> Void in
             // 所有任务完成后的回调
@@ -115,14 +116,17 @@ class SimpleNetWork {
                     return
                 }
                 
-                // 将文件复制保存到缓存路径文件夹下
+//                println("++++++++++++\(location.path!)")
+//                println("++++++++++++\(path)")
+                
+                // 将文件复制保存到缓存路径文件夹下，打开文件夹存的是的图片啊~~~~~~
                 NSFileManager.defaultManager().copyItemAtPath(location.path!, toPath: path, error: nil)
                 
                 // 直接回调，不传递任何参数
                 completion(result: nil, error: nil)
                 }.resume()
         }else{
-            //如果if判断中链接没有办法从 “NSURL(string: ” 那么也一定要执行回调，把调度组leave掉。
+            //如果if判断中,链接没有办法从 “NSURL(string: ” 那么也一定要执行回调，把调度组leave掉。
             let error = NSError(domain: SimpleNetWork.errorDomain, code: -1, userInfo: ["error" : "无法创建url"])
             completion(result: nil, error: error)
         }

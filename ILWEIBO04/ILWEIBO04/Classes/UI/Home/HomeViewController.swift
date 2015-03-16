@@ -48,7 +48,7 @@ class HomeViewController: UITableViewController {
         pullupView.addPullupOberserver(tableView, pullupLoadData: { () -> () in
             
             //             weakSelf!.pullupView.isPullupLoading = false
-            // 获取到 maxId
+            // 获取到 上次一组数据中的最后的一个数据的maxId
             if let maxId = self.statusesModel?.statuses?.last?.id {
                 // 加载 maxId 之前的数据
                 weakSelf?.loadData(maxId - 1)
@@ -84,10 +84,11 @@ class HomeViewController: UITableViewController {
             
             //处理数据
             if data != nil {
-                // 如果maxId = 0，只是默认刷新 20条数据
+                // 如果maxId = 0，执行刷新数据功能。默认刷新 20条数据。用来做下来刷新
+                
                 if maxId == 0 {
                     
-                    // 获取当前模型 赋值 数据
+                    // 获取当前模型 赋值数据
                     //MARK: 在闭包当中，需要self
                     weakSelf!.statusesModel = data
                     weakSelf!.tableView.reloadData()

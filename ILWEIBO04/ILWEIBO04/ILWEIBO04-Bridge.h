@@ -9,6 +9,7 @@
 
 //TODO oc和St需要桥接的代码放到这里
 #import "SVProgressHUD.h"
+#import <sqlite3.h>
 #import <CommonCrypto/CommonCrypto.h>
 
 

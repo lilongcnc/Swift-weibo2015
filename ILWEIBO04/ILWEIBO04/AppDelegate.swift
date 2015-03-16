@@ -18,6 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         
+        //测试数据库
+        SQLite.sharedSQLite.openDatabase("reade.db")
+        
+        
         
 //        println("\(EmoticonsSection.loadEmoticons())")
         
