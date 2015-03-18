@@ -96,7 +96,6 @@ class ComposeTextView: UITextView {
             }else{
                 //字符串
                 let str = (self.attributedText.string as NSString).substringWithRange(range)
-                println(str)
                 result += str
             }
             println("完整结果 \(result)")

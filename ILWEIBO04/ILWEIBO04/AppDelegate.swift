@@ -18,26 +18,78 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         
-        //测试数据库
+        //测试打开数据库
         SQLite.sharedSQLite.openDatabase("reade.db")
         
         
         
-//        println("\(EmoticonsSection.loadEmoticons())")
-        
-        //从沙盒中获取 access_token,有则直接跳转到 主界面
-        if let token = AccessTokenModel.loadAccessToken(){
-//            println(token.debugDescription)
-//            println(token.uid)
-            //跳转到主界面
+        // 检查沙盒中是否已经保存的 token
+        // 如果已经存在 token，应该直接显示主界面
+        if let token = AccessTokenModel.loadAccessToken() {
+            println(token.debugDescription)
+            println(token.uid)
+            
             showMainControllerView()
-        }else{
-            //通知监听 是否登陆成功
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: "showMainControllerView", name: WB_Login_Successed_Notification, object: nil)
+        } else {
+            // 添加通知监听，监听用户登录成功
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "showMainInterface", name: WB_Login_Successed_Notification, object: nil)
         }
         
         return true
     }
+    
+    ///  测试上拉刷新数据的代码
+    func demoLoadData() {
+        //测试存储图片数据
+        // 加载数据测试代码 － 第一次刷新，都是从服务器加载数据！
+        StatusesModel.loadStatusesModel(maxId: 0, topId: 0) { (data, error) -> () in
+            
+            // 第一次加载的数据
+            if let statuses = data?.statuses {
+                // 模拟上拉刷新
+                // 取出最后一条记录中的 id，id -1 -> maxId
+                let mId = statuses.last!.id
+                let tId = statuses.first!.id
+                println("maxId \(mId) ---- topId \(tId)")
+                
+                // 上拉刷新
+                 StatusesModel.loadStatusesModel(maxId: (mId - 1 ), topId: tId, completiom: { (data, error) -> () in
+                    println("第一次上拉刷新结束")
+                    
+                    // 再一次加载的数据
+                    if let statuses = data?.statuses {
+                        // 模拟上拉刷新
+                        // 取出最后一条记录中的 id，id -1 -> maxId
+                        let mId = statuses.last!.id
+                        let tId = statuses.first!.id
+                        println("2222 maxId \(mId) ---- topId \(tId)")
+                        
+                        // 上拉刷新
+                          StatusesModel.loadStatusesModel(maxId: (mId - 1), topId: tId, completiom: { (data, error) -> () in
+                                println("第二次下拉刷新")
+                          })
+                    }
+                })
+            }
+        }
+    }
+    
+    
+//        println("\(EmoticonsSection.loadEmoticons())")
+        
+//        //从沙盒中获取 access_token,有则直接跳转到 主界面
+//        if let token = AccessTokenModel.loadAccessToken(){
+////            println(token.debugDescription)
+////            println(token.uid)
+//            //跳转到主界面
+//            showMainControllerView()
+//        }else{
+//            //通知监听 是否登陆成功
+//            NSNotificationCenter.defaultCenter().addObserver(self, selector: "showMainControllerView", name: WB_Login_Successed_Notification, object: nil)
+//        }
+    
+//        return true
+
 
     
     //现实主界面

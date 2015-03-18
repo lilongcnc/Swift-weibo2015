@@ -86,8 +86,8 @@ class StatusCell: UITableViewCell {
             pictureView.reloadData()
             
             // 设置转发微博文字
-            if status!.retweeted_status != nil {
-               forwardLabel.text = status!.retweeted_status!.user!.name! + ":" + status!.retweeted_status!.text!
+            if status?.retweeted_status != nil {
+               forwardLabel.text = (status?.retweeted_status?.user?.name ?? "") + ":" + (status?.retweeted_status?.text ?? "")
             }
         }
     }
@@ -214,8 +214,6 @@ extension StatusCell : UICollectionViewDataSource,UICollectionViewDelegate {
         }
         return (itemSize, viewSize)
     }
-
-    
 
     
 }

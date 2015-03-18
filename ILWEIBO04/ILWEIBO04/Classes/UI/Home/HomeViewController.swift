@@ -10,7 +10,8 @@ import UIKit
 
 class HomeViewController: UITableViewController {
 
-    //定义微博数据
+    //定义全部的微博数据,注意statuses 中的所有数据都是连续的！新显示的数据的id到旧时间点的数据的id，值是变小的，但是不是10，9..这样变小
+
     var statusesModel : StatusesModel?
     
     //行高缓存
@@ -24,12 +25,6 @@ class HomeViewController: UITableViewController {
     }()
     
     
-    deinit{
-        print("HomwViewController释放")
-        //主动释放刷新视图对tableView的引用
-        tableView.removeObserver(self, forKeyPath: "contentOffset")
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,38 +35,58 @@ class HomeViewController: UITableViewController {
     }
 
     
-    //添加上拉加载更多视图
+    //设置上拉加载更多视图
     //MARK: 加上底部视图之后，待刷新界面就成白色的？？不加的话，是表格
     func setupPullupView() {
         tableView.tableFooterView = pullupView
         weak var weakSelf = self
         pullupView.addPullupOberserver(tableView, pullupLoadData: { () -> () in
             
-            //             weakSelf!.pullupView.isPullupLoading = false
+//           weakSelf!.pullupView.isPullupLoading = false
             // 获取到 上次一组数据中的最后的一个数据的maxId
-            if let maxId = self.statusesModel?.statuses?.last?.id {
-                // 加载 maxId 之前的数据
-                weakSelf?.loadData(maxId - 1)
+//            if let maxId = self.statusesModel?.statuses?.last?.id {
+//                // 加载 maxId 之前的数据
+//                weakSelf?.loadData(maxId - 1)
+//            }
+            
+            // 获取到 maxId
+            //TODO.....
+            if let statuses = self.statusesModel?.statuses {
+                let maxId = statuses.last!.id
+                let topId = statuses.first!.id
+                
+                weakSelf?.loadData(maxId - 1, topId: topId)
             }
+            
         })
     }
     
     
-    @IBAction func loadData() {
-        loadData(0)
+    deinit{
+        print("HomwViewController释放")
+        //主动释放刷新视图对tableView的引用
+        tableView.removeObserver(self, forKeyPath: "contentOffset")
     }
+
+    
+    
+    @IBAction func loadData() {
+        loadData(0,topId : 0)
+    }
+    
+    
     
 ///  获取 模型中的数据
     /**
   MARK : 这里函数中如果直接在函数形参数中赋初始值，loadData(maxId : Int = 0)，那么调用的时候就和“loadData()“函数区分不开。我们不在函数形参中赋值“loadData(maxId : Int)”，就可以区别开
 */
-     func loadData(maxId : Int) {
+    func loadData(maxId : Int,topId : Int) {
         //调用下拉刷新数据
         refreshControl?.beginRefreshing()
         weak var weakSelf = self
         
         //获取模型的数据
-        StatusesModel.loadStatusesModel(maxId : maxId) { (data, error) -> () in
+        StatusesModel.loadStatusesModel(maxId : maxId,topId : topId) { (data, error) -> () in
             
             //处理错误
             if error != nil {
@@ -93,7 +108,7 @@ class HomeViewController: UITableViewController {
                     weakSelf!.statusesModel = data
                     weakSelf!.tableView.reloadData()
                 }else{
-                    //在这里加载更多的新数据
+                    //上拉加载更多的新数据
                         println("加载到了新数据！")
                         // 拼接数据，数组的拼接
                         let list = weakSelf!.statusesModel!.statuses! + data!.statuses!

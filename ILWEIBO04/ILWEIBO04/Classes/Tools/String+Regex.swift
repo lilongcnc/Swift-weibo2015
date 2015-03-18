@@ -39,11 +39,11 @@ extension String {
         if let result = regex.firstMatchInString(self, options: NSMatchingOptions.allZeros, range: NSMakeRange(0, length)) {
             // 匹配到内容
             
-            println(result.rangeAtIndex(0))
-            println(text.substringWithRange(result.rangeAtIndex(0)))
-            
-            println(result.rangeAtIndex(1))
-            println(text.substringWithRange(result.rangeAtIndex(1)))
+//            println(result.rangeAtIndex(0))
+//            println(text.substringWithRange(result.rangeAtIndex(0)))
+//            
+//            println(result.rangeAtIndex(1))
+//            println(text.substringWithRange(result.rangeAtIndex(1)))
             
             return text.substringWithRange(result.rangeAtIndex(1))
         }

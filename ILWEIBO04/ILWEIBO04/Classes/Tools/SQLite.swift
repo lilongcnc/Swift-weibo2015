@@ -67,7 +67,7 @@ class SQLite {
         return execSQL(sql)
     }
     
-    ///  执行单条语句查询语句
+    ///  执行单条操作语句
     func execSQL(sql: String) -> Bool {
         return sqlite3_exec(db, sql.cStringUsingEncoding(NSUTF8StringEncoding)!, nil, nil, nil) == SQLITE_OK
     }

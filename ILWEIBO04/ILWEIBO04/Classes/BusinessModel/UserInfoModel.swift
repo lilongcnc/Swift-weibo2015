@@ -48,6 +48,36 @@ class UserInfoModel: NSObject {
     /// 自定义属性: 会员等级图像（UIImage）
     var mbImage : UIImage?
     
+    // 使用记录集实例化用户数据
+    init(record: [AnyObject]?) {
+        // id userId, screen_name, name, profile_image_url, avatar_large, created_at user_created_at, verified, mbrank
+        if record == nil {
+            return
+        }
+        
+        id = record![0] as! Int
+        screen_name = record![1] as? String
+        name = record![2] as? String
+        profile_image_url = record![3] as? String
+        avatar_large = record![4] as? String
+        created_at = record![5] as? String
+        verified = record![6] as! Bool
+        mbrank = record![7] as! Int
+    }
+    
+    ///  使用用户id从本地数据库加载用户记录
+    convenience init(pkId: Int) {
+        let sql = "SELECT id, screen_name, name, profile_image_url, avatar_large, created_at, verified, mbrank \n" +
+        "FROM T_User WHERE id = \(pkId)"
+        
+        let record = SQLite.sharedSQLite.execRow(sql)
+        self.init(record: record)
+    }
+    
+    
+    
+    
+    
     ///  会员等级 0~6
     var mbrank: Int = 0 {
         didSet{
@@ -57,6 +87,23 @@ class UserInfoModel: NSObject {
                 mbImage = nil
             }
         }
+    }
+    
+    
+    // 插入 或者 更新用户数据
+    func insertDB() -> Bool{
+        
+        // INSERT OR REPLACE 能够插入或者替换更新 记录（如果没有的属性数据就是插入，已经有相同的就是更新替换）
+        // !!! 字段中，必须要包含 主键
+        let sql = "INSERT OR REPLACE INTO T_User \n" +
+            "(id, screen_name, name, profile_image_url, avatar_large, created_at, verified, mbrank) \n" +
+            "VALUES \n" +
+        "(\(id), '\(screen_name!)', '\(name!)', '\(profile_image_url!)', '\(avatar_large!)', '\(created_at!)', \(Int(verified)), \(mbrank))"
+        
+        // 打印出来的 SQL 可以直接粘贴进行调试
+//        println(sql)
+        
+        return SQLite.sharedSQLite.execSQL(sql)
     }
     
 }
